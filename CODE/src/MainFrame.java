@@ -21,7 +21,7 @@ public class MainFrame extends JFrame implements ActionListener {
     public MainFrame(){
         setLayout(new BorderLayout());
 
-        rightPanel = new SettingsPanel(this);
+        rightPanel = new SettingPanel(this);
         rightPanel.initComponents();
 
         leftPanel = new Canvas();

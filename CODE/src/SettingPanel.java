@@ -14,7 +14,7 @@ import javax.swing.SpinnerNumberModel;
 import javax.swing.SwingConstants;
 
 public class SettingPanel extends JPanel {
-//    private MainFrame mainFrame;
+    private MainFrame mainFrame;
     private JLabel scoreLabel;
     private JPanel lowerPanel;
     private JSpinner rowSpinner;
@@ -22,11 +22,11 @@ public class SettingPanel extends JPanel {
     private JButton newGameButton;
     private JButton stopGameButton;
 
-    public SettingPanel()
+    public SettingPanel(MainFrame m)
     {
         setBorder(BorderFactory.createMatteBorder(0,1,0,0, Color.BLACK));
         setLayout(new BorderLayout());
-//        mainFrame=m;
+        mainFrame=m;
     }
     public void initComponents(){
         scoreLabel=new JLabel("0",SwingConstants.RIGHT);
@@ -39,7 +39,62 @@ public class SettingPanel extends JPanel {
         lowerPanel.setLayout(new BoxLayout(lowerPanel,BoxLayout.Y_AXIS));
 
         JPanel rowsPanel = new JPanel();
-        rowsPanel.setPreferredSize(new Dimension(Constants.Window));
+        rowsPanel.setPreferredSize(new Dimension(Constants.WINDOW_SIZE_X-Constants.FIELD_SIZE_X-5,50));
+        rowsPanel.setLayout(new BorderLayout());
+        SpinnerModel rowsModel = new SpinnerNumberModel(7, 3, 15, 1);
+        rowSpinner = new JSpinner(rowsModel);
+        JLabel rowsLabel = new JLabel("Initial rows");
+        rowsLabel.setBackground(Color.cyan);
+        rowsLabel.setForeground(Color.BLACK);
+        rowsLabel.setOpaque(true);
+        rowsLabel.setFont(new Font("Courier",Font.BOLD, 14));
+        rowsLabel.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 0));
+        rowsPanel.add(rowsLabel, BorderLayout.WEST);
+        rowsPanel.add(rowSpinner, BorderLayout.EAST);
+        rowsPanel.setBorder(BorderFactory.createEmptyBorder(5, 0, 10, 0));
+
+        JPanel colorPanel = new JPanel();
+        colorPanel.setPreferredSize(new Dimension(Constants.WINDOW_SIZE_X-Constants.FIELD_SIZE_X-5,50));
+        colorPanel.setLayout(new BorderLayout());
+        SpinnerModel colorModel = new SpinnerNumberModel(4, 3, 8, 1);
+        colorSpinner = new JSpinner(colorModel);
+        JLabel colorLabel = new JLabel("Initial colors");
+        colorLabel.setFont(new Font("Courier",Font.BOLD,14));
+
+        colorLabel.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 0));
+        colorPanel.add(colorLabel, BorderLayout.WEST);
+        colorPanel.add(colorSpinner, BorderLayout.EAST);
+        colorPanel.setBorder(BorderFactory.createEmptyBorder(5, 0, 10, 0));
+
+        JPanel buttonPanel = new JPanel();
+        newGameButton = new JButton("New game");
+        newGameButton.setActionCommand("NEWGAME");
+        newGameButton.addActionListener(mainFrame);
+
+        stopGameButton = new JButton("Stop game");
+        stopGameButton.setActionCommand("STOP GAME");
+        stopGameButton.addActionListener(mainFrame);
+        buttonPanel.add(newGameButton);
+        buttonPanel.add(stopGameButton);
+
+        lowerPanel.add(rowsPanel);
+        lowerPanel.add(colorPanel);
+        lowerPanel.add(buttonPanel);
+        JPanel spaceholder = new JPanel();
+        spaceholder.setPreferredSize(new Dimension(Constants.WINDOW_SIZE_X-Constants.FIELD_SIZE_X-5,340));
+        lowerPanel.add(spaceholder);
+        add(scoreLabel, BorderLayout.NORTH);
+        add(lowerPanel, BorderLayout.CENTER);
+    }
+    public void updateScore(long score){
+        scoreLabel.setText((new Long(score).toString()));
+    }
+    public int getRow(){
+
+        return (int) rowSpinner.getValue();
+    }
+    public int getColor(){
+        return (int) colorSpinner.getValue();
     }
 
 }
