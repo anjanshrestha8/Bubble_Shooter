@@ -20,8 +20,6 @@ public class MovingBubble extends Bubble {
  * constructor, initiates the bubble sets its location and
  * calculates the direction of the shot and the lengths of
  * the steps in both directions
- * @param b the bubble that serves as the base of the construction
- * @param dir the direction of the shot (position of the pointer)
  */
 
 public MovingBubble(Bubble b, Point dir) {
