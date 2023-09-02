@@ -52,7 +52,7 @@ public class MainFrame extends JFrame implements ActionListener {
 
     public void gameWon(long score){
         rightPanel.updateScore(score);
-        leftPanel.dispalayHightScore(score,false);
+        leftPanel.displayHighscore(score,false);
 
     }
 
@@ -63,14 +63,15 @@ public class MainFrame extends JFrame implements ActionListener {
     }
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getActionCommand().equals("NEW GAME"));{
+        if(e.getActionCommand().equals("NEWGAME"));{
             leftPanel.newGame(rightPanel.getRow(),rightPanel.getColor());
             leftPanel.getGame().setMainFrame(this);
+
         }
-         else if (e.getActionCommand().equals("STOP GAME")){
+         else if(e.getActionCommand().equals("STOPGAME")){
             if(leftPanel.getGame()!=null){
                 leftPanel.getGame().stop();
-                leftPanel.displayHighScore(0,true);
+                leftPanel.displayHighscore(0,true);
             }
          }
     }

@@ -94,14 +94,14 @@ public void setColor(int color) {
      * @param o the objectouptupstream to write to
      * @throws IOException
      */
-    public void writeObject(ObjectOutputStream o) throws IOException
+    public void writeObject(ObjectOutputStream o) throws IOException{
+        o.writeObject(name);
+        o.writeLong(score);
+        o.writeInt(rows);
+        o.writeInt(color);
+    }
 
-    /**
-     * deserialisation
-     * @param o the objectinputstream to read from
-     * @throws IOException
-     * @throws ClassNotFoundException
-     */
+
     public void readObject(ObjectInputStream o) throws IOException, ClassNotFoundException{
         name = (String) o.readObject();
         score = (long) o.readLong();

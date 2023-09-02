@@ -60,7 +60,8 @@ public class SettingsPanel extends JPanel {
         rowsPanel.setLayout(new BorderLayout());
         SpinnerModel rowsModel = new SpinnerNumberModel(7, 3, 15, 1);
         rowSpinner = new JSpinner(rowsModel);
-        JLabel rowsLabel = new JLabel("Initial rows");
+
+        JLabel rowsLabel = new JLabel("Initial rows :");
         rowsLabel.setBackground(Color.cyan);
         rowsLabel.setForeground(Color.BLACK);
         rowsLabel.setOpaque(true);
@@ -75,25 +76,35 @@ public class SettingsPanel extends JPanel {
         colorPanel.setLayout(new BorderLayout());
         SpinnerModel colorModel = new SpinnerNumberModel(4, 3, 8, 1);
         colorSpinner = new JSpinner(colorModel);
-        JLabel colorLabel = new JLabel("Initial colors");
-        colorLabel.setFont(new Font("Courier", Font.BOLD, 14));
 
+        JLabel colorLabel = new JLabel("Initial colors :");
+        colorLabel.setFont(new Font("Courier", Font.BOLD, 14));
+        colorLabel.setBackground(Color.cyan);
+        colorLabel.setOpaque(true);
         colorLabel.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 0));
         colorPanel.add(colorLabel, BorderLayout.WEST);
         colorPanel.add(colorSpinner, BorderLayout.EAST);
         colorPanel.setBorder(BorderFactory.createEmptyBorder(5, 0, 10, 0));
 
         JPanel buttonPanel = new JPanel();
+        buttonPanel.setBackground(Color.black);
+        buttonPanel.setOpaque(true);
         newGameButton = new JButton("New game");
         newGameButton.setActionCommand("NEWGAME");
         newGameButton.addActionListener(mainFrame);
+        newGameButton.setBackground(Color.GREEN);
+        newGameButton.setOpaque(true);
 
         stopGameButton = new JButton("Stop game");
         stopGameButton.setActionCommand("STOP GAME");
         stopGameButton.addActionListener(mainFrame);
+        stopGameButton.setBackground(Color.RED);
+        stopGameButton.setOpaque(true);
         buttonPanel.add(newGameButton);
         buttonPanel.add(stopGameButton);
 
+        lowerPanel.setBackground(Color.DARK_GRAY);
+        lowerPanel.setOpaque(true);
         lowerPanel.add(rowsPanel);
         lowerPanel.add(colorPanel);
         lowerPanel.add(buttonPanel);

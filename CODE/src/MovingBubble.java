@@ -38,7 +38,7 @@ public MovingBubble(Bubble b, Point dir) {
 
 /**
  * returns whether the bubble is moving
- * @return true is the bubble is moving, else false
+ *  true is the bubble is moving, else false
  */
 
 public boolean isMoving(){
@@ -47,7 +47,7 @@ public boolean isMoving(){
 
 /**
  * sets if the bubble is moving
- * @param x true is the bubble should move, else false
+ * x true is the bubble should move, else false
  */
 
 public void setMoving(boolean x){
