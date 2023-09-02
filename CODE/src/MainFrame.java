@@ -11,7 +11,7 @@ import java.util.Set;
  *
  */
 public class MainFrame extends JFrame implements ActionListener {
-    private SettingPanel rightPanel;
+    private SettingsPanel rightPanel;
     private Canvas leftPanel;
 
     /**
@@ -21,7 +21,7 @@ public class MainFrame extends JFrame implements ActionListener {
     public MainFrame(){
         setLayout(new BorderLayout());
 
-        rightPanel = new SettingPanel(this);
+        rightPanel = new SettingsPanel(this);
         rightPanel.initComponents();
 
         leftPanel = new Canvas();
